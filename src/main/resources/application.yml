@@ -1,1 +1,13 @@
+#spring config
+spring:
+  application:
+    name: salon
+  data:
+    mongodb:
+      username:
+      password:
+      uri: mongodb://localhost:27017/salon
 
+#server config
+server:
+  port: 8081

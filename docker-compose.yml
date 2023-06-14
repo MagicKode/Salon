@@ -1,11 +1,13 @@
 version: "3.8"
 
 services:
-  mongodb:
-    image: mongodb:
+  api_service:
+    build: .
     restart: always
-    environment:
-      POSTGRES_PASSWORD: root
-      ports:
-        - "5432:5432"
-
+    ports:
+      - 8081:8081
+  mongodb:
+    image: 'mongo:4.9.1'
+    restart: always
+    ports:
+      - '27017:27017'
