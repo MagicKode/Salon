@@ -1,7 +1,6 @@
 package com.example.salon.service.impl;
 
 import com.example.salon.model.dto.EmployeeDto;
-import com.example.salon.model.entity.Customer;
 import com.example.salon.model.entity.Employee;
 import com.example.salon.model.mapper.EmployeeMapper;
 import com.example.salon.repository.EmployeeRepository;
@@ -19,13 +18,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeMapper employeeMapper;
 
     @Override
-    public Employee create(Employee employee) {
-        employee = Employee.builder()
-                .firstName(employee.getFirstName())
-                .lastName(employee.getLastName())
-                .build();
-//        EmployeeDto employeeDto = employeeMapper.toEmployeeDto(employee);
-        return employeeRepository.save(employee);
+    public EmployeeDto create(EmployeeDto employeeDto) {
+        Employee employee = employeeRepository.save(Employee.builder()
+                .firstName(employeeDto.getFirstName())
+                .lastName(employeeDto.getLastName())
+                .login(employeeDto.getLogin())
+                .password(employeeDto.getPassword())
+                .phone(employeeDto.getPhone())
+                .email(employeeDto.getEmail())
+                .build());
+        return employeeMapper.toEmployeeDto(employee);
     }
 
     @Override

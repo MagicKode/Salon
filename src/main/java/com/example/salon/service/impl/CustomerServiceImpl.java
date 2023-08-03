@@ -14,15 +14,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
     @Override
-    public Customer createCustomer(Customer client) {
-        client = Customer.builder()
-                .firstName(client.getFirstName())
-                .lastName(client.getLastName())
-                .phone(client.getPhone())
-                .build();
-        return customerRepository.save(client);
+    public CustomerDto create(CustomerDto customerDto) {
+        Customer customer = customerRepository.save(Customer.builder()
+                .firstName(customerDto.getFirstName())
+                .lastName(customerDto.getLastName())
+                .login(customerDto.getLogin())
+                .password(customerDto.getPassword())
+                .phone(customerDto.getPhone())
+                .email(customerDto.getEmail())
+                .build());
+        return customerMapper.toCustomerDto(customer);
     }
 
     @Override

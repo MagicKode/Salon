@@ -32,11 +32,6 @@ public class User implements UserDetails {
         return getRoles();
     }
 
-//    @Override
-//    public String getPassword() {
-//        return getPassword();
-//    } //??
-
     @Override
     public String getUsername() {
         return getLogin();

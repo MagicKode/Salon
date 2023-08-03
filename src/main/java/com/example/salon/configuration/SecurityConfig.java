@@ -1,5 +1,6 @@
 package com.example.salon.configuration;
 
+import com.example.salon.configuration.annotation.RoleSecured;
 import com.example.salon.jwt.JwtFilter;
 import com.example.salon.jwt.JwtProvider;
 import com.example.salon.model.enums.Role;

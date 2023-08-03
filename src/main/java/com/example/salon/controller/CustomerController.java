@@ -1,7 +1,6 @@
 package com.example.salon.controller;
 
 import com.example.salon.model.dto.CustomerDto;
-import com.example.salon.model.entity.Customer;
 import com.example.salon.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,9 +20,10 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Customer> create(@RequestBody Customer client){
-        return new ResponseEntity<>(customerService.createCustomer(client), HttpStatus.CREATED);
+    public ResponseEntity<CustomerDto> create(@RequestBody CustomerDto customerDto){
+        return new ResponseEntity<>(customerService.create(customerDto), HttpStatus.CREATED);
     }
+
     @GetMapping("/all")
     public ResponseEntity<Page<CustomerDto>> getPage(Pageable pageable) {
         return new ResponseEntity<>(customerService.getPage(pageable), HttpStatus.OK);

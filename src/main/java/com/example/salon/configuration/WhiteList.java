@@ -6,10 +6,7 @@ import lombok.Getter;
 public enum WhiteList {
     ALL(new String[]{
             "/**/auth",
-            "/**/register",
-//            "/**/swagger-ui.html",
-//            "/**/swagger-ui/*",
-//            "/**/v3/**"
+            "/**/register"
     });
 
     WhiteList(String[] list) {
