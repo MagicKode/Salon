@@ -1,5 +1,7 @@
 package com.example.salon.service.impl;
 
+import com.example.salon.exception_handler.exception.BusinessException;
+import com.example.salon.exception_handler.exception.ExceptionCodes;
 import com.example.salon.model.dto.CustomerDto;
 import com.example.salon.model.entity.Customer;
 import com.example.salon.model.mapper.CustomerMapper;
@@ -30,8 +32,26 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Page<CustomerDto> getPage(Pageable pageable) {
-        return getPage(pageable);
+    public CustomerDto update(CustomerDto customerDto) {
+        return null;
+    }
+
+    @Override
+    public Page<CustomerDto> getPage(CustomerDto customerDto, Pageable pageable) {
+        return getPage(customerDto, pageable);
+    }
+
+    @Override
+    public void deleteByName(String firstName, String lastName) {
+        Customer customer = findCustomerByFirstLastName(firstName, lastName);
+        if (customer.getId() == null) {
+            throw BusinessException.builder().code(ExceptionCodes.WRONG_DATA).arg("Can be deleted only when custom: TRUE").build();
+        }
+        customerRepository.delete(customer);
+    }
+
+    private Customer findCustomerByFirstLastName(String firstName, String lastName) {
+        return customerRepository.findCustomerByFirstNameAndLastName(firstName, lastName);
     }
 }
 

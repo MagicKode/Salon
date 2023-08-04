@@ -6,5 +6,9 @@ import org.springframework.data.domain.Pageable;
 
 public interface CustomerService {
     CustomerDto create(CustomerDto customerDto);
-    Page<CustomerDto> getPage(Pageable pageable);
+    CustomerDto update(CustomerDto customerDto);
+
+    Page<CustomerDto> getPage(CustomerDto customerDto, Pageable pageable);
+
+    void deleteByName(String firstName, String lastName);
 }

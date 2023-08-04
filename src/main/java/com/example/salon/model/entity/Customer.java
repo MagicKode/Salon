@@ -5,11 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.joda.time.DateTime;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 @Data
 @Builder
@@ -31,11 +30,11 @@ public class Customer {
     private String password;
     @NotBlank(message = "email should not be empty")
     private String email;
-
-    @CreatedDate
-    private DateTime createdAt;
-    @LastModifiedDate
-    private DateTime lastModified;
+    @NotBlank(message = "createdAt should not be empty")
+    private Date createdAt;
+    @NotBlank(message = "lastModified should not be empty")
+    private Date lastModified;
+    private User user;
 
     //todo ссылка на user
 }

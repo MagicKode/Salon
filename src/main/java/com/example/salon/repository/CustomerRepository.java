@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends MongoRepository<Customer, String> {
+    Customer findCustomerByFirstNameAndLastName(String firstName, String lastName);
 }

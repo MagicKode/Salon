@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -17,4 +19,6 @@ public class EmployeeDto {
     private String password;
     private String phone;
     private String email;
+    private Date createdAt;
+    private Date updatedAt;
 }

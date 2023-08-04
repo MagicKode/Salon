@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -28,8 +30,11 @@ public class Employee {
     private String phone;
     @NotBlank(message = "email should not be empty")
     private String email;
-
-
+    @NotBlank(message = "createdAt should not be empty")
+    private Date createdAt;
+    @NotBlank(message = "updatedAt should not be empty")
+    private Date updatedAt;
+    private User user;
 }
 
 // todo связать сущности между собой с помощью добавления таблицы assignments параметрами : Ключа и время записи, как доп поле.
