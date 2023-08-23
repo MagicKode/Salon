@@ -1,4 +1,4 @@
-package com.example.salon.entity;
+package com.example.salon.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +11,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "salon")
-public class Client {
+@Document(collection = "assignment")
+public class Assignment {
+
     @Id
     private String id;
-    private String firstName;
-    private String lastName;
-    private String phone;
+
+
 }

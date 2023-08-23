@@ -1,9 +1,9 @@
 package com.example.salon.repository;
 
-import com.example.salon.entity.Client;
+import com.example.salon.model.entity.Assignment;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClientRepository extends MongoRepository<Client, String> {
+public interface AssignmentRepository extends MongoRepository<Assignment, String> {
 }
