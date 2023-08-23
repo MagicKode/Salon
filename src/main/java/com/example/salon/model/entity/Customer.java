@@ -1,6 +1,6 @@
 package com.example.salon.model.entity;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,8 +32,8 @@ public class Customer {
     private String email;
     @NotBlank(message = "createdAt should not be empty")
     private Date createdAt;
-    @NotBlank(message = "lastModified should not be empty")
-    private Date lastModified;
+    @NotBlank(message = "updatedAt should not be empty")
+    private Date updatedAt;
     private User user;
 
     //todo ссылка на user

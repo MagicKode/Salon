@@ -1,6 +1,5 @@
 package com.example.salon.model.entity;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
@@ -38,3 +38,5 @@ public class Employee {
 }
 
 // todo связать сущности между собой с помощью добавления таблицы assignments параметрами : Ключа и время записи, как доп поле.
+
+// add new entity Assigmence

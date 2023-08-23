@@ -2,7 +2,6 @@ package com.example.salon.exception_handler.configuration;
 
 import com.example.salon.exception_handler.service.BaseExceptionHandler;
 import com.example.salon.exception_handler.service.ExceptionResponseMapper;
-import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -18,11 +17,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 @ConditionalOnClass(ExceptionConfigurationProperties.class)
 @AutoConfigureBefore(ErrorMvcAutoConfiguration.class)
 public class ExceptionConfiguration {
-
-    @PostConstruct
-    void init() {
-        log.info("ExceptionHandlerConfiguration initialized");
-    }
 
     @Bean
     public ExceptionResponseMapper errorResponseMapper(ExceptionConfigurationProperties exceptionConfigurationProperties) {

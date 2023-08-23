@@ -2,15 +2,9 @@ package com.example.salon.exception_handler.service;
 
 import com.example.salon.exception_handler.exception.AbstractException;
 import com.example.salon.exception_handler.model.ExceptionResponse;
-import com.example.salon.exception_handler.model.FieldViolationResponse;\
-import com.mongodb.MongoException;
-import jakarta.validation.ConstraintViolationException;
+import com.example.salon.exception_handler.model.FieldViolationResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.exception.ConstraintViolationException;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.ServerErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.FieldError;
@@ -66,37 +60,4 @@ public class BaseExceptionHandler {
         log.error("Business exception ({}): {}, {}", uuid, exception.getMessage(), message, exception);
         return responseEntity;
     }
-
-    @ExceptionHandler(value = {DataIntegrityViolationException.class})
-    public ResponseEntity<ExceptionResponse> handleUniqueConstraintErrors(DataIntegrityViolationException exception) {
-        if (exception.getCause() instanceof ConstraintViolationException) {
-            UUID uuid = UUID.randomUUID();
-            Throwable mostSpecificCause = exception.getMostSpecificCause();
-            if (mostSpecificCause instanceof MongoException mongoException) {
-                ServerErrorMessage serverErrorMessage = mongoException.getMessage();
-                String tableName = null;
-                String constraint = null;
-                if (serverErrorMessage != null) {
-                    tableName = getFieldIfNotNullOrElseSetUndefined(serverErrorMessage.getTable(), uuid, "table");
-                    constraint = getFieldIfNotNullOrElseSetUndefined(serverErrorMessage.getConstraint(), uuid, "constraint");
-                }
-                ResponseEntity<ExceptionResponse> responseEntity =
-                        exceptionResponseMapper.handleUniqueConstraintException(uuid, tableName, constraint);
-                String message = Optional.ofNullable(responseEntity.getBody()).orElse(new ExceptionResponse()).getMessage();
-                log.error("Unique constraint exception ({}): {}, {}", uuid, exception.getMessage(), message, exception);
-                return responseEntity;
-            }
-        }
-        return handleThrowable(exception);
-    }
-
-    private static String getFieldIfNotNullOrElseSetUndefined(String field, UUID uuid, String fieldName) {
-        if (field == null) {
-            log.error("BaseExceptionHandler.handleUniqueConstraintErrors() - Uuid: '{}'. " +
-                      "Attention! Failed to determine {} name. Value set as 'undefined'", uuid, fieldName);
-            field = UniqueConstraintDataService.UNDEFINED;
-        }
-        return field;
-    }
-
 }

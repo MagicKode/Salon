@@ -11,3 +11,6 @@ spring:
 #server config
 server:
   port: 8081
+
+jwt:
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkQgWiIsImFkbWluIjp0cnVlLCJpYXQiOjE1MTYyMzkwMjJ9.3Dre1XXWiCiQnhINIWT2vfvnBjzbkqmWQD-tdO9qTQI

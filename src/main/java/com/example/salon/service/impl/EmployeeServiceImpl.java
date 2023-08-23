@@ -19,14 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto create(EmployeeDto employeeDto) {
-        Employee employee = employeeRepository.save(Employee.builder()
-                .firstName(employeeDto.getFirstName())
-                .lastName(employeeDto.getLastName())
-                .login(employeeDto.getLogin())
-                .password(employeeDto.getPassword())
-                .phone(employeeDto.getPhone())
-                .email(employeeDto.getEmail())
-                .build());
+        Employee employee = employeeRepository.save(employeeMapper.toEmployee(employeeDto));
         return employeeMapper.toEmployeeDto(employee);
     }
 

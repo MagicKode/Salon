@@ -44,7 +44,8 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
                 .antMatchers(WhiteList.ALL.getList()).permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilterBefore(new JwtFilter(jwtProvider, userDetailService), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JwtFilter(jwtProvider, userDetailService), UsernamePasswordAuthenticationFilter.class)
+                ;
         return http.build();
     }
 

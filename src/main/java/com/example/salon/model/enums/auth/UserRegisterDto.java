@@ -16,14 +16,14 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Validated
-public class CustomerRegisterDto {
+public class UserRegisterDto {
     @NotBlank(message = "login should not be empty")
     private String login;
     @NotBlank(message = "password should not be empty")
     private String password;
     @NotBlank(message = "passwordConfirmation should not be empty")
     private String passwordConfirmation;
-    @Email(message = "incorrect email")
+    @Email(message = "INCORRECT email")
     @NotBlank(message = "email should not be empty")
     private String email;
 }

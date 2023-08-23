@@ -1,6 +1,5 @@
 package com.example.salon.model.enums.auth;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
-import static com.example.salon.exception_handler.exception.ValidationCodes.NOT_EMPTY;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -16,9 +15,9 @@ import static com.example.salon.exception_handler.exception.ValidationCodes.NOT_
 @AllArgsConstructor
 @NoArgsConstructor
 @Validated
-public class AuthDto {
-    @NotBlank(message = NOT_EMPTY)
+public class UserAuthDto {
+    @NotBlank(message = "login should not be empty")
     private String login;
-    @NotBlank(message = NOT_EMPTY)
+    @NotBlank(message = "password should not be empty")
     private String password;
 }

@@ -16,7 +16,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Validated
-public class CustomerRegisterDto {
+public class EmployeeRegisterDto {
     @NotBlank(message = "login should not be empty")
     private String login;
     @NotBlank(message = "password should not be empty")

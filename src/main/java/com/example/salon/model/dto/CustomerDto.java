@@ -1,6 +1,5 @@
 package com.example.salon.model.dto;
 
-import com.example.salon.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
